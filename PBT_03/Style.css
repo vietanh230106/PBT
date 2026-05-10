@@ -1,0 +1,98 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* HEADER */
+#main-header {
+    background: linear-gradient(90deg, #4b6cb7, #182848);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+/* NAVIGATION */
+.navbar {
+    background-color: #222;
+    padding: 15px;
+    text-align: center;
+}
+
+.navbar a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+/* HOVER */
+.navbar a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
+/* ACTIVE LINK */
+.navbar .active {
+    color: orange;
+    border-bottom: 2px solid orange;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+/* SECTION TITLE */
+section h2 {
+    color: #182848;
+}
+
+/* TABLE */
+#skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+/* TABLE BORDER */
+#skills-table th,
+#skills-table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+/* HEADER ROW */
+#skills-table th {
+    background-color: #222;
+    color: white;
+}
+
+/* ZEBRA STRIPING */
+#skills-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* HOVER ROW */
+#skills-table tbody tr:hover {
+    background-color: #d6eaff;
+}
+
+/* FOOTER */
+footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
