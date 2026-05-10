@@ -1,0 +1,80 @@
+body {
+    font-family: Arial;
+    margin: 20px;
+}
+
+/* PHẦN 1 */
+
+.wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    background-color: #eee;
+}
+
+/* DEFAULT */
+.content-box {
+    box-sizing: content-box;
+}
+
+/* BORDER BOX */
+.border-box {
+    box-sizing: border-box;
+    background-color: #cde7ff;
+}
+
+/* PHẦN 2 */
+
+.layout {
+    width: 1000px;
+    overflow: hidden;
+    border: 3px solid black;
+    margin-bottom: 40px;
+}
+
+/* KHÔNG BORDER BOX */
+
+.sidebar,
+.ads {
+    width: 250px;
+    padding: 15px;
+    float: left;
+    background-color: #ddd;
+    border: 2px solid #999;
+}
+
+.content {
+    width: 500px;
+    padding: 20px;
+    float: left;
+    background-color: #eee;
+    border: 2px solid #999;
+}
+
+/* CÓ BORDER BOX */
+
+.border-layout * {
+    box-sizing: border-box;
+}
+
+.sidebar2,
+.ads2 {
+    width: 250px;
+    padding: 15px;
+    float: left;
+    background-color: #ddd;
+    border: 2px solid #999;
+}
+
+.content2 {
+    width: 500px;
+    padding: 20px;
+    float: left;
+    background-color: #eee;
+    border: 2px solid #999;
+}
