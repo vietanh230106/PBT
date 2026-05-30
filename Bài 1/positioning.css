@@ -8,7 +8,6 @@ body {
     font-family: Arial;
 }
 
-/* HEADER */
 
 header {
     position: fixed;
@@ -33,7 +32,6 @@ nav a {
     text-decoration: none;
 }
 
-/* LAYOUT */
 
 .container {
     display: flex;
@@ -43,7 +41,6 @@ nav a {
     padding: 20px;
 }
 
-/* SIDEBAR */
 
 .sidebar {
     width: 250px;
@@ -56,13 +53,12 @@ nav a {
     padding: 20px;
 }
 
-/* CONTENT */
+
 
 .content {
     flex: 1;
 }
 
-/* PRODUCT CARD */
 
 .product-card {
     width: 300px;
@@ -76,7 +72,6 @@ nav a {
     width: 100%;
 }
 
-/* BADGE */
 
 .badge {
     position: absolute;
@@ -98,7 +93,6 @@ nav a {
     font-weight: bold;
 }
 
-/* SCROLL TOP */
 
 .scroll-top {
     position: fixed;
@@ -119,7 +113,6 @@ nav a {
     font-size: 24px;
 }
 
-/* CONTENT DÀI */
 
 .long-content {
     margin-top: 30px;
