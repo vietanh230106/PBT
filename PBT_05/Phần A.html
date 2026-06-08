@@ -1,0 +1,70 @@
+.container {
+    width: 1200px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+}
+
+Ưu điểm Mobile First
+
+Tối ưu cho thiết bị di động.
+Hiệu năng tốt hơn.
+Dễ mở rộng lên màn hình lớn.
+Câu A2 - Breakpoints
+Breakpoint	Thiết bị	Số cột sản phẩm
+<576px	Mobile	1 cột
+≥576px	Mobile lớn	2 cột
+≥768px	Tablet	2 cột
+≥992px	Laptop	3 cột
+≥1200px	Desktop	4 cột
+≥1400px	Màn hình lớn	5-6 cột
+Câu A3 - Media Queries
+Màn hình	Width
+375px	100%
+600px	540px
+800px	720px
+1000px	960px
+1400px	1140px
+Câu A4 - SCSS
+Variables
+$primary-color: #3498db;
+
+.btn {
+    background: $primary-color;
+}
+Nesting
+.card {
+    h3 {
+        color: blue;
+    }
+}
+Mixins
+@mixin center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.box {
+    @include center;
+}
+Extend
+.button {
+    padding:10px;
+}
+
+.primary-btn {
+    @extend .button;
+    background:red;
+}
+
+Tại sao trình duyệt không đọc được SCSS?
+
+SCSS là tiền xử lý CSS (preprocessor).
+
+Cần biên dịch:
+
+sass style.scss style.css
