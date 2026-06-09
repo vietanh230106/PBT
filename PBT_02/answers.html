@@ -1,0 +1,147 @@
+PHẦN A — KIỂM TRA ĐỌC HIỂU
+ Câu A1 — Input Types
+type="email" → Ô nhập text, tự kiểm tra có dấu @ và format email → Dùng cho đăng ký tài khoản
+type="password" → Ô nhập bị che ký tự → Dùng cho mật khẩu đăng nhập
+type="number" → Ô nhập số, có nút tăng/giảm → Nhập số lượng sản phẩm
+type="tel" → Ô nhập số điện thoại → Nhập số điện thoại khách hàng
+type="date" → Chọn ngày từ lịch → Chọn ngày sinh / ngày giao hàng
+type="checkbox" → Ô tick nhiều lựa chọn → Đồng ý điều khoản
+type="radio" → Chọn 1 trong nhiều → Chọn giới tính / phương thức thanh toán
+type="file" → Upload file → Upload ảnh sản phẩm / avatar
+type="range" → Thanh kéo → Chọn số ngày giao hàng
+type="search" → Ô tìm kiếm (có nút x) → Tìm sản phẩm
+ Câu A2 — Validation
+
+Trường hợp 1:
+→ Không submit được
+ Vì có required mà giá trị rỗng
+
+Trường hợp 2:
+→ Không submit
+ Vì type="email" yêu cầu đúng format email
+
+Trường hợp 3:
+→ Không submit
+ Vì 15 > max="10"
+
+Trường hợp 4:
+→ Không submit
+ Vì không match regex [0-9]{10} (cần đúng 10 số)
+
+Trường hợp 5:
+→ Không submit
+ Vì minlength="8" nhưng chỉ nhập 3 ký tự
+ Câu A3 — Accessibility
+<label for="email"> quan trọng vì:
+ Screen reader đọc đúng tên field → người khiếm thị hiểu được đang nhập gì
+ Click label sẽ focus vào input
+
+Dùng <fieldset> + <legend> khi:
+ Nhóm các input liên quan
+Ví dụ:
+
+Thông tin cá nhân
+- Họ tên
+- Email
+aria-label dùng khi:
+ Không có label hiển thị (icon, button ẩn text)
+Không nên dùng aria-label nếu đã có <label> vì:
+ Trùng thông tin → gây rối cho screen reader
+ Câu A4 — Media
+loading="lazy":
+ Ảnh chỉ load khi gần viewport
+ Giảm load trang, tăng tốc độ
+Không nên dùng khi:
+ Ảnh ở trên cùng (above-the-fold)
+
+<video> nhiều <source> vì:
+ Trình duyệt hỗ trợ format khác nhau
+
+3 format phổ biến:
+
+mp4
+webm
+ogg
+alt:
+ Mô tả ảnh cho SEO + người khiếm thị
+
+Ví dụ:
+
+iPhone: "iPhone 16 Pro Max 256GB Titan màu xám"
+Decorative: alt=""
+Biểu đồ: "Biểu đồ doanh thu Q1 năm 2026 tăng 20%"
+ Câu A5 — <figure> vs <img>
+
+Dùng <img> khi:
+ Ảnh đơn lẻ, không cần mô tả thêm
+
+Ví dụ:
+
+Avatar user
+Icon sản phẩm
+
+Dùng <figure> khi:
+ Cần caption
+ví dụ:
+
+Ảnh sản phẩm + giá
+Biểu đồ + mô tả
+ PHẦN C — PHÂN TÍCH
+ Câu C1 — Debug Form
+
+Lỗi 1: Không có label cho tên
+ Sửa:
+
+<label for="name">Tên:</label>
+<input type="text" id="name" name="name" required>
+
+Lỗi 2: Email không có label
+ Sửa:
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
+
+Lỗi 3: Password không có label
+ Sửa thêm label
+
+Lỗi 4: Confirm password không validate
+ HTML không so sánh được → cần JS
+
+Lỗi 5: Phone dùng type="text"
+ Sửa:
+
+<input type="tel" pattern="[0-9]{10}">
+
+Lỗi 6: Select không có label
+ Thêm <label for="city">
+
+Lỗi 7: Checkbox không có input
+ Sửa:
+
+<input type="checkbox" required> Tôi đồng ý
+
+Lỗi 8: Thiếu name attribute
+-Tất cả input cần name
+
+Câu C2 — Validation Strategy
+Regex:
+CMND/CCCD:
+^[0-9]{12}$
+Số tài khoản:
+^[0-9]{10,15}$
+HTML5 validation có đủ không?
+
+KHÔNG
+
+Vì:
+
+Bị bypass dễ (DevTools)
+Không bảo mật
+Không kiểm tra server
+3 thứ HTML không làm được:
+So sánh password confirm
+Kiểm tra tài khoản đã tồn tại
+Validate logic phức tạp (ví dụ tuổi ≥ 18)
+2 rủi ro nếu chỉ validate frontend:
+Hacker bypass → gửi dữ liệu sai
+SQL Injection / dữ liệu bẩn vào hệ thống

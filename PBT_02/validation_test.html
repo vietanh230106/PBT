@@ -1,0 +1,45 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation Test</title>
+</head>
+<body>
+
+<h2>Test HTML5 Validation</h2>
+
+<form>
+
+    <!-- Trường hợp 1 -->
+    <p>Trường hợp 1: required nhưng để trống</p>
+    <label for="case1">Text:</label>
+    <input type="text" id="case1" required value=""><br><br>
+
+    <!-- Trường hợp 2 -->
+    <p>Trường hợp 2: email sai format</p>
+    <label for="case2">Email:</label>
+    <input type="email" id="case2" value="abc"><br><br>
+
+    <!-- Trường hợp 3 -->
+    <p>Trường hợp 3: number vượt max</p>
+    <label for="case3">Number (1-10):</label>
+    <input type="number" id="case3" min="1" max="10" value="15"><br><br>
+
+    <!-- Trường hợp 4 -->
+    <p>Trường hợp 4: pattern sai</p>
+    <label for="case4">10 chữ số:</label>
+    <input type="text" id="case4" pattern="[0-9]{10}" value="abc123"><br><br>
+
+    <!-- Trường hợp 5 -->
+    <p>Trường hợp 5: password quá ngắn</p>
+    <label for="case5">Password:</label>
+    <input type="password" id="case5" minlength="8" value="123"><br><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+</body>
+</html>
+```
