@@ -1,0 +1,19 @@
+.buy-btn{
+
+    padding:12px 20px;
+
+    background:blue;
+
+    color:white;
+
+    transition:all .3s ease;
+}
+
+.buy-btn:hover{
+
+    background:red;
+
+    color:white;
+
+    transform:scale(1.05);
+}
