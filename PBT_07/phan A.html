@@ -1,0 +1,214 @@
+Câu A1 – var / let / const
+Đoạn 1
+console.log(x);
+var x = 5;
+
+Kết quả:
+
+undefined
+
+Giải thích:
+
+var được hoisting lên đầu.
+
+Thực tế JS hiểu là:
+
+var x;
+console.log(x);
+x = 5;
+Đoạn 2
+console.log(y);
+let y = 10;
+
+Kết quả:
+
+ReferenceError
+
+Giải thích:
+
+let có Temporal Dead Zone (TDZ).
+
+Không được truy cập trước khi khai báo.
+
+Đoạn 3
+const z = 15;
+z = 20;
+console.log(z);
+
+Kết quả:
+
+TypeError
+
+Giải thích:
+
+const không cho phép gán lại giá trị.
+
+Đoạn 4
+const arr = [1,2,3];
+arr.push(4);
+console.log(arr);
+
+Kết quả:
+
+[1,2,3,4]
+
+Giải thích:
+
+const cấm đổi địa chỉ biến.
+
+Không cấm thay đổi nội dung object hoặc array.
+
+Đoạn 5
+let a = 1;
+
+{
+   let a = 2;
+   console.log(a);
+}
+
+console.log(a);
+
+Kết quả:
+
+Trong block: 2
+Ngoài block: 1
+
+Giải thích:
+
+let có block scope.
+
+Câu A2 – Data Types & Coercion
+typeof null
+"object"
+
+(Lỗi lịch sử của JS)
+
+typeof undefined
+"undefined"
+typeof NaN
+"number"
+"5" + 3
+"53"
+"5" - 3
+2
+"5" * "3"
+15
+true + true
+2
+
+vì
+
+true = 1
+[] + []
+""
+[] + {}
+"[object Object]"
+{} + []
+0
+
+(trong console thường được hiểu là block rỗng + 0)
+
+Vì sao khác nhau?
+"5" + 3
+
+Toán tử + ưu tiên nối chuỗi.
+
+53
+"5" - 3
+
+Toán tử -
+
+ép kiểu về Number.
+
+2
+Câu A3 – == và ===
+5 == "5"
+true
+5 === "5"
+false
+null == undefined
+true
+null === undefined
+false
+NaN == NaN
+false
+0 == false
+true
+0 === false
+false
+"" == false
+true
+Nên dùng gì?
+===
+
+Vì:
+
+Không ép kiểu
+An toàn hơn
+Dễ debug hơn
+Câu A4 – Truthy & Falsy
+Tất cả giá trị Falsy
+false
+0
+-0
+0n
+""
+null
+undefined
+NaN
+Dự đoán
+if("0")
+
+In:
+
+A
+if("")
+
+Không in
+
+if([])
+
+In:
+
+C
+if({})
+
+In:
+
+D
+if(null)
+
+Không in
+
+if(0)
+
+Không in
+
+if(-1)
+
+In:
+
+G
+if(" ")
+
+In:
+
+H
+
+(space vẫn là chuỗi có nội dung)
+
+Câu A5 – Template Literals
+Cách 1
+let greeting =
+`Xin chào ${name}! Bạn ${age} tuổi.`;
+Cách 2
+let url =
+`https://api.example.com/users/${userId}/orders?page=${page}`;
+Cách 3
+let html = `
+<div class="card">
+    <h2>${title}</h2>
+    <p>${description}</p>
+    <span>Giá: ${price}đ</span>
+</div>
+`;
