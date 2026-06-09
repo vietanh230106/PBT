@@ -1,0 +1,114 @@
+Câu A1 – Grid System 
+
+HTML:
+
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-3">Box 1</div>
+    <div class="col-12 col-md-6 col-lg-3">Box 2</div>
+    <div class="col-12 col-md-6 col-lg-3">Box 3</div>
+    <div class="col-12 col-md-6 col-lg-3">Box 4</div>
+</div>
+Kết quả
+Kích thước	<768px	768px - 991px	≥992px
+Số cột hiển thị	1	2	4
+Layout	4 hàng	2 hàng × 2 cột	1 hàng × 4 cột
+Mobile (<768px)
+┌───────┐
+│ Box 1 │
+├───────┤
+│ Box 2 │
+├───────┤
+│ Box 3 │
+├───────┤
+│ Box 4 │
+└───────┘
+Tablet (768-991px)
+┌───────┬───────┐
+│ Box 1 │ Box 2 │
+├───────┼───────┤
+│ Box 3 │ Box 4 │
+└───────┴───────┘
+Desktop (≥992px)
+┌───────┬───────┬───────┬───────┐
+│ Box 1 │ Box 2 │ Box 3 │ Box 4 │
+└───────┴───────┴───────┴───────┘
+col-md-6 nghĩa là gì?
+
+Bootstrap có 12 cột.
+
+6 / 12 = 50%
+
+=> từ breakpoint md (768px) trở lên, phần tử chiếm 6 cột = 50% chiều rộng.
+
+Tại sao không cần col-sm-12?
+
+Bootstrap mặc định là Mobile First.
+
+col-12
+
+đã áp dụng cho mọi màn hình.
+
+Vì vậy:
+
+col-12 col-md-6 col-lg-3
+
+đủ rồi.
+
+Câu A2 – Utilities & Components (10đ)
+d-none d-md-block
+<div class="d-none d-md-block">
+
+Ý nghĩa:
+
+Kích thước	Hiển thị
+<768px	Ẩn
+≥768px	Hiện
+
+Tương đương:
+
+display:none;
+
+@media(min-width:768px){
+    display:block;
+}
+5 Spacing Utilities
+mt-3
+margin-top:1rem;
+mb-4
+margin-bottom:1.5rem;
+ms-2
+margin-left:0.5rem;
+px-4
+padding-left:1.5rem;
+padding-right:1.5rem;
+py-3
+padding-top:1rem;
+padding-bottom:1rem;
+mb-auto
+margin-bottom:auto;
+
+Dùng trong Flexbox để đẩy phần tử.
+
+container vs container-fluid vs container-md
+container
+<div class="container">
+
+Chiều rộng cố định theo breakpoint.
+
+Ví dụ:
+
+540px
+720px
+960px
+1140px
+container-fluid
+<div class="container-fluid">
+
+Luôn:
+
+width:100%
+container-md
+<div class="container-md">
+Kích thước	Width
+<768px	100%
+≥768px	Fixed container

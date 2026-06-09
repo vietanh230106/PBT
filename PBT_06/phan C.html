@@ -1,0 +1,87 @@
+Câu C1 – Tùy biến Bootstrap 
+
+Muốn đổi:
+
+$primary: #E63946;
+
+Các bước:
+
+B1
+
+Cài Sass
+
+npm install -g sass
+B2
+
+Tải Bootstrap source SCSS
+
+bootstrap/
+└── scss/
+B3
+
+Tạo file:
+
+custom.scss
+$primary:#E63946;
+
+@import "bootstrap";
+B4
+
+Compile
+
+sass custom.scss custom.css
+Vì sao không nên sửa trực tiếp?
+
+Sai:
+
+.btn-primary{
+    background:red;
+}
+
+Vì:
+
+Chỉ đổi button
+Các component khác vẫn màu xanh
+Khó bảo trì
+
+Ví dụ:
+
+Alert
+Badge
+Progress
+Navbar
+Link
+
+vẫn dùng màu cũ.
+
+Dùng:
+
+$primary
+
+sẽ đổi toàn bộ hệ thống.
+
+Câu C2 – So sánh CSS thuần và Bootstrap
+CSS thuần
+
+Navbar:
+
+.nav{
+ display:flex;
+ justify-content:space-between;
+}
+
+Card:
+
+.card{
+ border:1px solid #ddd;
+ border-radius:10px;
+}
+
+Tổng:
+
+50-100 dòng CSS
+Bootstrap
+<nav class="navbar navbar-expand-lg">
+<div class="card">
+
+Không cần CSS.
