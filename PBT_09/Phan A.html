@@ -1,0 +1,161 @@
+Câu A1 – DOM Tree
+Sơ đồ DOM Tree
+div#app
+│
+├── header
+│   ├── h1
+│   │   └── "Todo App"
+│   │
+│   └── nav
+│       ├── a.active
+│       │   └── "All"
+│       ├── a
+│       │   └── "Active"
+│       └── a
+│           └── "Completed"
+│
+└── main
+    ├── form#todoForm
+    │   ├── input#todoInput
+    │   └── button
+    │       └── "Add"
+    │
+    └── ul#todoList
+        ├── li.todo-item
+        │   └── "Learn HTML"
+        └── li.todo-item.completed
+            └── "Learn CSS"
+Query Selector
+Chọn thẻ h1
+document.querySelector("h1");
+Chọn input trong form
+document.querySelector("#todoForm input");
+Chọn tất cả .todo-item
+document.querySelectorAll(".todo-item");
+Chọn link active
+document.querySelector("a.active");
+Chọn li đầu tiên trong todoList
+document.querySelector("#todoList li:first-child");
+Chọn tất cả a trong nav
+document.querySelectorAll("nav a");
+Câu A2 – innerHTML vs textContent
+innerHTML
+
+Cho phép đọc/ghi HTML.
+
+Ví dụ:
+
+document.querySelector("#demo").innerHTML =
+    "<b>Hello World</b>";
+
+Kết quả:
+
+<b>Hello World</b>
+
+chữ sẽ in đậm.
+
+textContent
+
+Chỉ xử lý văn bản thuần.
+
+Ví dụ:
+
+document.querySelector("#demo").textContent =
+    "<b>Hello World</b>";
+
+Kết quả hiển thị:
+
+<b>Hello World</b>
+
+không render HTML.
+
+Khi nào dùng?
+innerHTML
+
+Dùng khi:
+
+Tạo nhiều HTML cùng lúc
+Chèn template HTML
+
+Ví dụ:
+
+container.innerHTML =
+`
+<h2>Product</h2>
+<p>Price: 100$</p>
+`;
+textContent
+
+Dùng khi:
+
+Hiển thị dữ liệu người dùng nhập
+Hiển thị text thông thường
+
+An toàn hơn.
+
+Lỗ hổng XSS
+
+Code nguy hiểm:
+
+const userInput =
+document.querySelector("#search").value;
+
+document.querySelector("#result").innerHTML =
+userInput;
+
+Nếu user nhập:
+
+<img src=x onerror="alert('Hacked!')">
+
+Trình duyệt sẽ thực thi:
+
+alert("Hacked!");
+
+=> XSS Attack.
+
+Cách sửa
+const userInput =
+document.querySelector("#search").value;
+
+document.querySelector("#result").textContent =
+userInput;
+
+Hoặc sanitize dữ liệu trước khi render.
+
+Câu A3 – Event Bubbling
+
+HTML:
+
+<div id="outer">
+    <div id="inner">
+        <button id="btn">Click me</button>
+    </div>
+</div>
+Khi click button
+
+Event nổi bọt từ trong ra ngoài:
+
+BUTTON
+INNER
+OUTER
+Vì sao?
+
+Thứ tự bubbling:
+
+button
+↓
+inner
+↓
+outer
+Nếu dùng stopPropagation()
+document.querySelector("#btn")
+.addEventListener("click", (e) => {
+    console.log("BUTTON");
+    e.stopPropagation();
+});
+
+Kết quả:
+
+BUTTON
+
+INNER và OUTER không chạy nữa.

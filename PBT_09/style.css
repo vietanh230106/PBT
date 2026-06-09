@@ -1,0 +1,15 @@
+body{
+    font-family: Arial;
+    max-width:600px;
+    margin:auto;
+}
+
+.completed{
+    text-decoration:line-through;
+    color:gray;
+}
+
+li{
+    cursor:pointer;
+    margin:10px 0;
+}
