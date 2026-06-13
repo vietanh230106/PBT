@@ -1,0 +1,187 @@
+Bài 1.1 — Component render lần đầu
+Câu hỏi 1: Tại sao component chỉ render 1 lần?
+
+Khi trang được tải:
+
+<LifecycleDemo />
+
+React sẽ:
+
+Gọi hàm LifecycleDemo()
+Nhận JSX được return
+Hiển thị lên màn hình
+
+Sau đó không có gì thay đổi nữa nên React không cần gọi lại component.
+
+Vì vậy Console chỉ hiện:
+
+1️⃣ Component được gọi!
+
+một lần duy nhất.
+
+Câu hỏi 2: Khi nào component render lại?
+
+Component sẽ render lại khi:
+
+1. State thay đổi
+
+Ví dụ:
+
+const [count, setCount] = useState(0);
+
+setCount(count + 1);
+
+Mỗi lần gọi:
+
+setCount(...)
+
+React sẽ render lại component.
+
+2. Props thay đổi
+
+Ví dụ:
+
+<Child name={username} />
+
+Nếu:
+
+username = "Anh";
+
+đổi thành:
+
+username = "Minh";
+
+thì component Child render lại.
+
+3. Component cha render lại
+
+Ví dụ:
+
+function Parent() {
+    const [count, setCount] = useState(0);
+
+    return <Child />;
+}
+
+Khi Parent render lại thì Child cũng thường render lại.
+
+Bài 1.2 — Biến thường vs useState
+Chạy BadCounter
+
+Code:
+
+let count = 0;
+
+Nhấn nút:
+
+count = count + 1;
+
+Console:
+
+Count: 1
+Count: 2
+Count: 3
+
+Nhưng màn hình vẫn:
+
+Bộ đếm: 0
+Tại sao?
+
+Vì:
+
+let count
+
+chỉ là biến JavaScript thông thường.
+
+React không biết biến đó đã thay đổi nên không render lại giao diện.
+
+Chạy GoodCounter
+
+Code:
+
+const [count, setCount] = useState(0);
+
+Nhấn nút:
+
+setCount(count + 1);
+
+React nhận được tín hiệu:
+
+State đã thay đổi
+↓
+Render lại component
+↓
+Cập nhật giao diện
+
+Kết quả:
+
+0 → 1 → 2 → 3 → 4 ...
+
+hiển thị đúng trên màn hình.
+
+Console thấy render mấy lần?
+
+Thêm dòng này:
+
+function GoodCounter() {
+    console.log("🔄 Render");
+
+    const [count, setCount] = useState(0);
+
+    ...
+}
+Lần đầu mở trang
+🔄 Render
+
+1 lần.
+
+Nhấn nút 3 lần
+🔄 Render
+🔄 Render
+🔄 Render
+
+thêm 3 lần.
+
+Tổng cộng:
+
+4 lần render
+
+(1 lần ban đầu + 3 lần do setCount()).
+
+Bài 1.3 — Luồng hoạt động React
+
+Khi bấm nút:
+
+<button onClick={() => setStep(step + 1)}>
+
+quá trình diễn ra như sau:
+
+Người dùng click
+        ↓
+setStep(step + 1)
+        ↓
+State thay đổi
+        ↓
+React gọi lại FlowDemo()
+        ↓
+console.log("🔄 Component render!")
+        ↓
+Return JSX mới
+        ↓
+React so sánh giao diện cũ và mới
+        ↓
+Chỉ cập nhật phần thay đổi
+
+Ví dụ:
+
+Ban đầu:
+
+Bước hiện tại: 1
+👋 Bước 1: Xin chào!
+
+Click:
+
+Bước hiện tại: 2
+📖 Bước 2: Đang học React
+
+React không tải lại cả trang mà chỉ thay đổi phần cần thiết.

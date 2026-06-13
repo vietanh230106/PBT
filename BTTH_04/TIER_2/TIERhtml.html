@@ -1,0 +1,189 @@
+Bài 2.1 — Hiển thị biến đơn giản
+JSX cho phép nhúng JavaScript bằng {}
+
+Ví dụ:
+
+const ten = "Nguyễn Văn Minh";
+const tuoi = 20;
+
+return (
+    <div>
+        <h1>{ten}</h1>
+        <p>{tuoi}</p>
+        <p>{tuoi + 1}</p>
+    </div>
+);
+
+Kết quả:
+
+Nguyễn Văn Minh
+20
+21
+Trong {} có thể làm gì?
+Hiển thị biến
+<p>{ten}</p>
+Tính toán
+<p>{10 + 5}</p>
+<p>{tuoi + 1}</p>
+Gọi hàm
+<p>{ten.toUpperCase()}</p>
+
+Kết quả:
+
+NGUYỄN VĂN MINH
+Dùng toán tử điều kiện
+<p>{laSinhVien ? "Có" : "Không"}</p>
+Không được viết gì trong JSX?
+Sai
+<p>{if (tuoi > 18) "Lớn"}</p>
+
+Vì if là câu lệnh.
+
+Đúng
+<p>{tuoi > 18 ? "Lớn" : "Nhỏ"}</p>
+Sai
+<h1>{{ ten: "Minh" }}</h1>
+
+React không render object trực tiếp được.
+
+Bài tập BMI
+
+Ví dụ:
+
+function BMI() {
+    const canNang = 60;
+    const chieuCao = 1.7;
+
+    const bmi = canNang / (chieuCao * chieuCao);
+
+    return (
+        <div>
+            <h2>Chỉ số BMI</h2>
+            <p>{bmi.toFixed(2)}</p>
+        </div>
+    );
+}
+Bài 2.2 — Conditional Rendering
+
+React cho phép hiện hoặc ẩn giao diện theo điều kiện.
+
+Cách 1: Ternary ? :
+
+Cú pháp:
+
+điều_kiện ? giá_trị_đúng : giá_trị_sai
+
+Ví dụ:
+
+const isLoggedIn = true;
+
+<h2>
+    {isLoggedIn ? "Chào mừng bạn!" : "Vui lòng đăng nhập"}
+</h2>
+
+Kết quả:
+
+Chào mừng bạn!
+Xếp loại học lực
+score >= 9 ? "Xuất sắc" :
+score >= 8 ? "Giỏi" :
+score >= 7 ? "Khá" :
+score >= 5 ? "Trung bình" :
+"Yếu"
+
+Ví dụ:
+
+score = 8.5
+
+Kết quả:
+
+Giỏi
+Cách 2: Toán tử &&
+
+Khi chỉ muốn hiện nếu điều kiện đúng.
+
+{hasNotification && (
+    <p>Có thông báo mới</p>
+)}
+Nếu
+hasNotification = true
+
+Hiển thị:
+
+Có thông báo mới
+Nếu
+hasNotification = false
+
+Không hiện gì cả.
+
+Ví dụ Online / Offline
+function Status() {
+    const online = true;
+
+    return (
+        <div>
+            {online ? "🟢 Online" : "🔴 Offline"}
+        </div>
+    );
+}
+Ví dụ Hết hàng
+const stock = 0;
+
+return (
+    <div>
+        {stock === 0 && (
+            <p style={{ color: "red" }}>
+                Hết hàng
+            </p>
+        )}
+    </div>
+);
+Bài 2.3 — Render danh sách
+Cách hiển thị mảng
+
+Ví dụ:
+
+const fruits = ["Táo", "Chuối", "Cam"];
+Dùng map()
+<ul>
+    {fruits.map((fruit) => (
+        <li>{fruit}</li>
+    ))}
+</ul>
+
+Kết quả:
+
+• Táo
+• Chuối
+• Cam
+Render object
+
+Ví dụ:
+
+const students = [
+    { id: 1, name: "Minh", age: 20 },
+    { id: 2, name: "An", age: 21 }
+];
+Hiển thị
+{students.map(student => (
+    <div key={student.id}>
+        {student.name} - {student.age}
+    </div>
+))}
+Tại sao phải có key?
+
+Ví dụ:
+
+students.map(student => (
+    <div key={student.id}>
+        {student.name}
+    </div>
+))
+
+key giúp React biết:
+
+Phần tử nào được thêm
+Phần tử nào bị xóa
+Phần tử nào thay đổi
+
+để cập nhật nhanh hơn.
